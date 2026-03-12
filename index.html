@@ -220,6 +220,7 @@
     const textoEntrada = document.getElementById("textoEntrada");
     const textoSaida = document.getElementById("textoSaida");
     const btnConverter = document.getElementById("btnConverter");
+    const opcoesConversao = document.querySelectorAll('input[name="tipoConversao"]');
 
     function capitalizarPrimeiraLetraDeCadaLinha(texto) {
       return texto
@@ -261,10 +262,14 @@
 
     btnConverter.addEventListener("click", converterTexto);
 
-    textoEntrada.addEventListener("input", () => {
-      if (textoEntrada.value.trim() === "") {
-        textoSaida.value = "";
-      }
+    textoEntrada.addEventListener("input", converterTexto);
+
+    textoEntrada.addEventListener("paste", () => {
+      setTimeout(converterTexto, 0);
+    });
+
+    opcoesConversao.forEach((opcao) => {
+      opcao.addEventListener("change", converterTexto);
     });
   </script>
 </body>
