@@ -4,6 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Converter Maiúsculas e Minúsculas</title>
+
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href='data:image/svg+xml;utf8,
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+      <rect width="64" height="64" rx="14" fill="%230b0f19"/>
+      <rect x="8" y="8" width="48" height="48" rx="10" fill="%234f8cff"/>
+      <path d="M20 20h24v6H35v18h-6V26h-9z" fill="white"/>
+    </svg>'
+  />
+
   <style>
     * {
       box-sizing: border-box;
@@ -19,6 +31,7 @@
       --accent: #4f8cff;
       --accent-hover: #3b74dd;
       --output-bg: #0f1524;
+      --footer: #8f9ab3;
     }
 
     body {
@@ -34,11 +47,23 @@
       padding: 0 20px;
     }
 
+    .header {
+      margin-bottom: 22px;
+    }
+
     h1 {
       font-size: 32px;
-      margin: 0 0 22px;
+      margin: 0 0 10px;
       font-weight: 700;
       line-height: 1.2;
+    }
+
+    .description {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--muted);
+      max-width: 820px;
     }
 
     .box {
@@ -141,6 +166,14 @@
       cursor: pointer;
     }
 
+    footer {
+      text-align: center;
+      margin-top: 22px;
+      padding: 8px 0 0;
+      font-size: 16px;
+      color: var(--footer);
+    }
+
     @media (max-width: 900px) {
       .content {
         flex-direction: column;
@@ -161,6 +194,10 @@
         font-size: 28px;
       }
 
+      .description {
+        font-size: 17px;
+      }
+
       label.title {
         font-size: 18px;
       }
@@ -173,12 +210,23 @@
       .options {
         font-size: 17px;
       }
+
+      footer {
+        font-size: 15px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Converter Maiúsculas e Minúsculas</h1>
+    <div class="header">
+      <h1>Converter Maiúsculas e Minúsculas</h1>
+      <p class="description">
+        Cole ou digite seu texto abaixo para converter rapidamente entre letras maiúsculas,
+        minúsculas ou com a primeira letra em destaque. Simples, direto e sem enrolação, como
+        toda ferramenta útil deveria ser.
+      </p>
+    </div>
 
     <div class="box">
       <div class="content">
@@ -210,10 +258,14 @@
 
         <div class="panel">
           <label for="textoSaida" class="title">Resultado:</label>
-          <textarea id="textoSaida" readonly placeholder="O resultado aparecerá aqui..."></textarea>
+          <textarea id="textoSaida" placeholder="O resultado aparecerá aqui..."></textarea>
         </div>
       </div>
     </div>
+
+    <footer>
+      Desenvolvido por Tatiane Gomes
+    </footer>
   </div>
 
   <script>
