@@ -231,7 +231,7 @@
       <h1>Converter Maiúsculas e Minúsculas</h1>
       <p class="description">
         Cole ou digite seu texto abaixo para converter rapidamente entre letras maiúsculas,
-        minúsculas ou com a primeira letra em destaque.
+        minúsculas, com a primeira letra em destaque ou em formato de bullet point.
       </p>
     </div>
 
@@ -255,6 +255,11 @@
             <label>
               <input type="radio" name="tipoConversao" value="primeiraLetra">
               Primeira letra
+            </label>
+
+            <label>
+              <input type="radio" name="tipoConversao" value="bulletPoint">
+              Bullet point
             </label>
           </div>
         </div>
@@ -302,6 +307,19 @@
         .join("\n");
     }
 
+    function formatarBulletPoint(texto) {
+      const frases = texto
+        .split(/(?<=[.!?])\s+|\n+/)
+        .map((f) => f.trim().replace(/[;.!?]+$/, ""))
+        .filter((f) => f.length > 0);
+
+      if (frases.length === 0) return "";
+
+      return frases
+        .map((frase, i) => (i < frases.length - 1 ? frase + ";" : frase + "."))
+        .join("\n");
+    }
+
     function converterTexto() {
       const texto = textoEntrada.value;
       const tipoSelecionado = document.querySelector('input[name="tipoConversao"]:checked').value;
@@ -314,6 +332,8 @@
         resultado = texto.toLowerCase();
       } else if (tipoSelecionado === "primeiraLetra") {
         resultado = capitalizarPrimeiraLetraDeCadaLinha(texto);
+      } else if (tipoSelecionado === "bulletPoint") {
+        resultado = formatarBulletPoint(texto);
       }
 
       textoSaida.value = resultado;
